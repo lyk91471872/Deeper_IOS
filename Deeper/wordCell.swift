@@ -17,6 +17,8 @@ class wordCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.wordEnglish.lineBreakMode = .byTruncatingTail
+        self.wordChinese.lineBreakMode = .byTruncatingTail
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

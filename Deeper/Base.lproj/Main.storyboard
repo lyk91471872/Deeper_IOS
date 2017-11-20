@@ -174,7 +174,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="English" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ETo-5w-7wm">
-                                            <rect key="frame" x="10" y="5" width="56" height="34"/>
+                                            <rect key="frame" x="10" y="5" width="170" height="34"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -190,21 +190,35 @@
                                                 <segue destination="Zdc-po-ihV" kind="show" identifier="editWord" id="JtW-nk-dRC"/>
                                             </connections>
                                         </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jUI-LA-unq">
+                                            <rect key="frame" x="180" y="11" width="15" height="22"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="15" id="qdc-b3-Gtr"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chinese" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m2a-yA-kVP">
-                                            <rect key="frame" x="156.5" y="5" width="62" height="34"/>
+                                            <rect key="frame" x="195" y="5" width="115" height="34"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="iLm-Zp-taf" firstAttribute="leading" secondItem="m2a-yA-kVP" secondAttribute="trailing" constant="15" id="7pC-kB-t0v"/>
                                         <constraint firstAttribute="bottom" secondItem="iLm-Zp-taf" secondAttribute="bottom" id="7t2-qU-zwD"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="jUI-LA-unq" secondAttribute="bottom" id="DXT-ab-YhH"/>
                                         <constraint firstItem="ETo-5w-7wm" firstAttribute="top" secondItem="zL6-cA-Hzf" secondAttribute="top" constant="5" id="EJh-nN-tBe"/>
+                                        <constraint firstItem="m2a-yA-kVP" firstAttribute="leading" secondItem="jUI-LA-unq" secondAttribute="trailing" id="Hyv-Ct-rly"/>
                                         <constraint firstAttribute="bottom" secondItem="ETo-5w-7wm" secondAttribute="bottom" constant="5" id="J24-UG-WZ5"/>
                                         <constraint firstItem="ETo-5w-7wm" firstAttribute="leading" secondItem="zL6-cA-Hzf" secondAttribute="leading" constant="10" id="Kei-q6-2Ol"/>
                                         <constraint firstItem="m2a-yA-kVP" firstAttribute="firstBaseline" secondItem="ETo-5w-7wm" secondAttribute="firstBaseline" id="MNe-D2-oSN"/>
-                                        <constraint firstItem="m2a-yA-kVP" firstAttribute="centerX" secondItem="zL6-cA-Hzf" secondAttribute="centerX" id="aBD-bB-GTk"/>
+                                        <constraint firstItem="jUI-LA-unq" firstAttribute="top" secondItem="zL6-cA-Hzf" secondAttribute="topMargin" id="Tk4-jN-SVv"/>
+                                        <constraint firstItem="jUI-LA-unq" firstAttribute="leading" secondItem="ETo-5w-7wm" secondAttribute="trailing" id="b1n-fR-ecf"/>
                                         <constraint firstItem="m2a-yA-kVP" firstAttribute="baseline" secondItem="ETo-5w-7wm" secondAttribute="baseline" id="d2f-OU-t8T"/>
+                                        <constraint firstItem="jUI-LA-unq" firstAttribute="centerX" secondItem="zL6-cA-Hzf" secondAttribute="centerX" id="iCG-b4-nz7"/>
                                         <constraint firstItem="iLm-Zp-taf" firstAttribute="top" secondItem="zL6-cA-Hzf" secondAttribute="top" id="qev-Pb-yeP"/>
                                         <constraint firstAttribute="trailing" secondItem="iLm-Zp-taf" secondAttribute="trailing" id="zTC-Fv-Zu4"/>
                                     </constraints>
@@ -237,7 +251,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6xv-lX-QMq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-282" y="-956"/>
+            <point key="canvasLocation" x="-282.39999999999998" y="-956.67166416791611"/>
         </scene>
         <!--List Name-->
         <scene sceneID="AVi-ro-rRW">

@@ -47,8 +47,22 @@ class ListNameViewController: UITableViewController {
             let listName = addListName.text
             if listName != "" {
                 self.message = ""
+                var finalListName = listName
+                var listNameIsConflicted = true
+                var indexOfSameName = 0
+                while listNameIsConflicted {
+                    listNameIsConflicted = false
+                    indexOfSameName += 1
+                    for list in self.lists {
+                        if list.name == finalListName {
+                            finalListName = listName! + " (" + String(indexOfSameName) + ")"
+                            listNameIsConflicted = true
+                            break
+                        }
+                    }
+                }
                 let list = CoreDataHelper.newList()
-                list.name = addListName.text
+                list.name = finalListName
                 
                 CoreDataHelper.saveList()
                 self.lists = CoreDataHelper.retrieveLists()
