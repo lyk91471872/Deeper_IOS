@@ -97,7 +97,7 @@ class ListNameViewController: UITableViewController {
 
     func newPresetList() {
         let selectController = UIAlertController(title: "Please Select Subject", message: message, preferredStyle: .actionSheet)
-        let jsonURL = Bundle.main.url(forResource: "test", withExtension: "json")
+        let jsonURL = Bundle.main.url(forResource: "vocabularies", withExtension: "json")
         let jsonData = try! Data(contentsOf: jsonURL!)
         let vocabData = try! JSON(data: jsonData).arrayValue
         for wordList in vocabData {

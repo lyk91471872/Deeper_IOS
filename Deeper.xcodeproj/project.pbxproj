@@ -40,7 +40,7 @@
 		868C212E1F33B8760077A056 /* locked.png in Resources */ = {isa = PBXBuildFile; fileRef = 868C212C1F33B8760077A056 /* locked.png */; };
 		868C212F1F33B8760077A056 /* opened.png in Resources */ = {isa = PBXBuildFile; fileRef = 868C212D1F33B8760077A056 /* opened.png */; };
 		869E993E1FDD487300A2F12A /* JSONHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869E993D1FDD487300A2F12A /* JSONHelper.swift */; };
-		869E99421FDDFE6500A2F12A /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = 869E99411FDDFE6500A2F12A /* test.json */; };
+		86FE085B205D74BE005AC65D /* vocabularies.json in Resources */ = {isa = PBXBuildFile; fileRef = 86FE085A205D74BE005AC65D /* vocabularies.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -94,7 +94,7 @@
 		868C212C1F33B8760077A056 /* locked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = locked.png; path = Deeper/Resources/locked.png; sourceTree = "<group>"; };
 		868C212D1F33B8760077A056 /* opened.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = opened.png; path = Deeper/Resources/opened.png; sourceTree = "<group>"; };
 		869E993D1FDD487300A2F12A /* JSONHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONHelper.swift; sourceTree = "<group>"; };
-		869E99411FDDFE6500A2F12A /* test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
+		86FE085A205D74BE005AC65D /* vocabularies.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = vocabularies.json; sourceTree = "<group>"; };
 		F6B175E3C9EA134A9731D87B /* Pods-Deeper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Deeper.release.xcconfig"; path = "Pods/Target Support Files/Pods-Deeper/Pods-Deeper.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -212,7 +212,7 @@
 		86E536E51FBBFDA5008CFBCC /* Preset */ = {
 			isa = PBXGroup;
 			children = (
-				869E99411FDDFE6500A2F12A /* test.json */,
+				86FE085A205D74BE005AC65D /* vocabularies.json */,
 			);
 			path = Preset;
 			sourceTree = "<group>";
@@ -300,7 +300,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				868C212F1F33B8760077A056 /* opened.png in Resources */,
-				869E99421FDDFE6500A2F12A /* test.json in Resources */,
 				868C21281F3398450077A056 /* Icon-App-40x40@2x.png in Resources */,
 				8650A0DD1F2C5BBD00FF0EB3 /* LaunchScreen.storyboard in Resources */,
 				868C211A1F337FE10077A056 /* launch.png in Resources */,
@@ -309,6 +308,7 @@
 				868C21241F3398450077A056 /* Icon-App-20x20@2x.png in Resources */,
 				868C212B1F3398450077A056 /* Icon-App-60x60@3x.png in Resources */,
 				868C212A1F3398450077A056 /* Icon-App-60x60@2x.png in Resources */,
+				86FE085B205D74BE005AC65D /* vocabularies.json in Resources */,
 				868C21261F3398450077A056 /* Icon-App-29x29@2x.png in Resources */,
 				8650A0DA1F2C5BBD00FF0EB3 /* Assets.xcassets in Resources */,
 				8650A0D51F2C5BBD00FF0EB3 /* Main.storyboard in Resources */,
