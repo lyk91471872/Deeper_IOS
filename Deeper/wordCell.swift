@@ -16,9 +16,12 @@ class wordCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        // Overflow settings of text in wordlist overview
         self.wordEnglish.lineBreakMode = .byTruncatingTail
         self.wordChinese.lineBreakMode = .byTruncatingTail
+        
+        // Color settings of text in wordlist
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

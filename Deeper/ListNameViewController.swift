@@ -9,10 +9,12 @@
 import UIKit
 import Foundation
 import CoreData
-
+import SwiftyJSON
+import Alamofire
 
 class ListNameViewController: UITableViewController {
     //var row = Int()
+    var json = String()
     var message = ""
     var lists = [ListMO]() {
         didSet {
@@ -32,9 +34,14 @@ class ListNameViewController: UITableViewController {
             alert -> Void in
             self.newPresetList()
         })
+        let newOnlineListAction = UIAlertAction(title: "Online", style: .default, handler: {
+            alert -> Void in
+            self.newOnlineList()
+        })
         selectController.addAction(cancelSelectAction)
         selectController.addAction(newListAction)
         selectController.addAction(newPresetListAction)
+        selectController.addAction(newOnlineListAction)
         self.present(selectController, animated: true, completion: nil)
     }
     
@@ -87,14 +94,16 @@ class ListNameViewController: UITableViewController {
         
         self.present(alertController, animated: true, completion: nil)
     }
-    
-    func newPresetList()
-    {
+
+    func newPresetList() {
         let selectController = UIAlertController(title: "Please Select Subject", message: message, preferredStyle: .actionSheet)
-        for wordList in PresetedVocabularies.wordLists {
-            selectController.addAction(UIAlertAction(title: wordList["subject"] as! String, style: UIAlertActionStyle.default, handler: {
+        let jsonURL = Bundle.main.url(forResource: "test", withExtension: "json")
+        let jsonData = try! Data(contentsOf: jsonURL!)
+        let vocabData = try! JSON(data: jsonData).arrayValue
+        for wordList in vocabData {
+            selectController.addAction(UIAlertAction(title: wordList["subject"].stringValue, style: UIAlertActionStyle.default, handler: {
                 alert -> Void in
-                var listName = wordList["subject"] as! String
+                var listName = wordList["subject"].stringValue
                 var listNameIsConflicted = true
                 var indexOfSameName = 0
                 while listNameIsConflicted {
@@ -102,7 +111,7 @@ class ListNameViewController: UITableViewController {
                     indexOfSameName += 1
                     for list in self.lists {
                         if list.name == listName {
-                            listName = wordList["subject"] as! String + " (" + String(indexOfSameName) + ")"
+                            listName = wordList["subject"].stringValue + " (" + String(indexOfSameName) + ")"
                             listNameIsConflicted = true
                             break
                         }
@@ -110,10 +119,10 @@ class ListNameViewController: UITableViewController {
                 }
                 let list = CoreDataHelper.newList()
                 list.name = listName
-                for word in wordList["vocabularies"] as! [[String: String]] {
+                for word in wordList["vocabularies"].arrayValue {
                     let newWord = CoreDataHelper.newWord()
-                    newWord.english = word["English"]
-                    newWord.chinese = word["Chinese"]
+                    newWord.english = word["English"].stringValue
+                    newWord.chinese = word["Chinese"].stringValue
                     newWord.familiarity = 0
                     list.addToListToWord(newWord)
                 }
@@ -128,8 +137,62 @@ class ListNameViewController: UITableViewController {
         self.present(selectController, animated: true, completion: nil)
     }
     
-    /*func selectSubject()
-    {
+    func newOnlineList() {
+        let filepath = Bundle.main.path(forResource: "test", ofType: "json")
+        let fileManager = FileManager.default
+        
+        
+        let alertController = UIAlertController(title: self.json, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        
+        let addAction = UIAlertAction(title: "Add", style: UIAlertActionStyle.default, handler: {
+            alert -> Void in
+            let addListName = alertController.textFields![0] as UITextField
+            let listName = addListName.text
+            if listName != "" {
+                self.message = ""
+                var finalListName = listName
+                var listNameIsConflicted = true
+                var indexOfSameName = 0
+                while listNameIsConflicted {
+                    listNameIsConflicted = false
+                    indexOfSameName += 1
+                    for list in self.lists {
+                        if list.name == finalListName {
+                            finalListName = listName! + " (" + String(indexOfSameName) + ")"
+                            listNameIsConflicted = true
+                            break
+                        }
+                    }
+                }
+                let list = CoreDataHelper.newList()
+                list.name = finalListName
+                
+                CoreDataHelper.saveList()
+                self.lists = CoreDataHelper.retrieveLists()
+                self.tableView.reloadData()
+            } else {
+                self.message = "List name cannot be empty!"
+                self.setListName(self.addList)
+            }
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: {
+            (action : UIAlertAction!) -> Void in
+            self.message = ""
+        })
+        
+        
+        alertController.addTextField { (textField : UITextField!) -> Void in
+            textField.placeholder = "en"
+        }
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(addAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    /*func selectSubject() {
         let selectSubjectController = UIAlertController(title: "Select Subject", message: "", preferredStyle: .actionSheet)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let selectAction = UIAlertAction(title: "Test", style: .default, handler: {
@@ -142,6 +205,8 @@ class ListNameViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
+        // Refresh when view appear
         lists = CoreDataHelper.retrieveLists()
         self.tableView.reloadData()
     }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13533" systemVersion="16G1036" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17C88" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="List" representedClassName="ListMO" syncable="YES" codeGenerationType="class">
         <attribute name="name" attributeType="String" syncable="YES"/>
         <relationship name="listToWord" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Word" inverseName="wordToList" inverseEntity="Word" syncable="YES"/>
@@ -12,7 +12,7 @@
         <relationship name="wordToList" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="List" inverseName="listToWord" inverseEntity="List" syncable="YES"/>
     </entity>
     <elements>
-        <element name="List" positionX="-63" positionY="-18" width="128" height="75"/>
+        <element name="List" positionX="-63" positionY="-18" width="128" height="73"/>
         <element name="Word" positionX="117" positionY="54" width="117" height="120"/>
     </elements>
 </model>
