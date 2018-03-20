@@ -69,6 +69,14 @@
                                                                 </stackView>
                                                             </subviews>
                                                         </stackView>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z9U-I7-YOq">
+                                                            <rect key="frame" x="212.5" y="0.0" width="57" height="37.5"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                                            <state key="normal" title="rename"/>
+                                                            <connections>
+                                                                <action selector="renameList:" destination="Gyt-Ra-hfY" eventType="touchUpInside" id="pFP-PA-G5K"/>
+                                                            </connections>
+                                                        </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gnh-aH-emS">
                                                             <rect key="frame" x="300" y="0.0" width="50" height="37.5"/>
                                                             <constraints>
@@ -132,6 +140,7 @@
                                     <outlet property="listName" destination="YGe-1f-xPO" id="3IG-DI-p2t"/>
                                     <outlet property="numberOfWords" destination="52u-6v-F8q" id="dAZ-aB-zqR"/>
                                     <outlet property="progressView" destination="xUY-YB-a6i" id="5W2-Z5-26H"/>
+                                    <outlet property="renameList" destination="Z9U-I7-YOq" id="Ngh-wI-vMK"/>
                                     <outlet property="resetProgress" destination="WMS-UR-oPj" id="LCz-zr-2qI"/>
                                     <segue destination="xYJ-9j-qR7" kind="show" identifier="showMemorizingView" id="38U-ew-FHA"/>
                                 </connections>
@@ -145,12 +154,12 @@
                     <navigationItem key="navigationItem" title="Deeper" id="ffd-7B-gGm">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="soz-wz-FvO">
                             <connections>
-                                <action selector="setListName:" destination="NdL-mb-6wm" id="f5Q-os-sbg"/>
+                                <action selector="addNewList:" destination="NdL-mb-6wm" id="3vJ-wZ-h4H"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="addList" destination="soz-wz-FvO" id="fkP-bz-L6v"/>
+                        <outlet property="addNewList" destination="soz-wz-FvO" id="bXO-xa-mie"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FDL-We-K5F" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -271,22 +280,16 @@
                                 <color key="textColor" red="0.015686274509803921" green="0.48627450980392156" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="English" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aSs-Bs-7em">
-                                <rect key="frame" x="26" y="161.5" width="323" height="100"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aSs-Bs-7em">
+                                <rect key="frame" x="26" y="211.5" width="323" height="100"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="rg9-CX-zOv"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Thonburi-Bold" family="Thonburi" pointSize="40"/>
+                                <fontDescription key="fontDescription" name="Thonburi-Bold" family="Thonburi" pointSize="35"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="1" height="-1"/>
-                            </label>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="中文释义" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JFB-Er-8Sc">
-                                <rect key="frame" x="126" y="341" width="121.5" height="36"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="YH4-kS-282">
                                 <rect key="frame" x="26" y="567" width="323" height="50"/>
@@ -357,23 +360,42 @@
                                     <action selector="showExplanationButtonTapped:" destination="xYJ-9j-qR7" eventType="touchUpInside" id="1aQ-mh-Vuz"/>
                                 </connections>
                             </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="center" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ctp-nJ-To8">
+                                <rect key="frame" x="36" y="323.5" width="303" height="20.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="CeO-mi-3A9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Explanation" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JFB-Er-8Sc">
+                                <rect key="frame" x="36" y="349" width="303" height="36"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                <color key="textColor" red="0.25045162273366584" green="0.24891655563809359" blue="0.25688055202030469" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="u58-Bh-A2T" firstAttribute="top" secondItem="YH4-kS-282" secondAttribute="bottom" constant="50" id="4OS-Yj-TNJ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="wRq-2G-CVd" secondAttribute="trailing" constant="10" id="5Z1-au-96o"/>
-                            <constraint firstItem="JFB-Er-8Sc" firstAttribute="top" secondItem="aSs-Bs-7em" secondAttribute="bottom" constant="80" id="EUK-Mo-gCA"/>
+                            <constraint firstItem="JFB-Er-8Sc" firstAttribute="leading" secondItem="8Dg-wa-qY2" secondAttribute="leadingMargin" constant="20" id="9HZ-NJ-xtQ"/>
                             <constraint firstItem="YH4-kS-282" firstAttribute="leading" secondItem="8Dg-wa-qY2" secondAttribute="leadingMargin" constant="10" id="Lzy-qa-bMb"/>
-                            <constraint firstItem="aSs-Bs-7em" firstAttribute="top" secondItem="vyC-ti-qcL" secondAttribute="bottom" constant="70" id="RsY-Yi-vOm"/>
+                            <constraint firstItem="ctp-nJ-To8" firstAttribute="centerY" secondItem="8Dg-wa-qY2" secondAttribute="centerY" id="SOH-qp-XKG"/>
                             <constraint firstItem="vyC-ti-qcL" firstAttribute="top" secondItem="SNf-QM-Kap" secondAttribute="bottom" constant="8" symbolic="YES" id="UoR-Qe-4Rr"/>
-                            <constraint firstItem="JFB-Er-8Sc" firstAttribute="centerX" secondItem="aSs-Bs-7em" secondAttribute="centerX" id="XZ5-EY-k9B"/>
+                            <constraint firstItem="JFB-Er-8Sc" firstAttribute="top" secondItem="ctp-nJ-To8" secondAttribute="bottom" constant="5" id="WAz-38-G6I"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="JFB-Er-8Sc" secondAttribute="trailing" constant="20" id="XAl-OX-qCF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="aSs-Bs-7em" secondAttribute="trailing" constant="10" id="YD6-T1-4E8"/>
                             <constraint firstItem="aSs-Bs-7em" firstAttribute="leading" secondItem="8Dg-wa-qY2" secondAttribute="leadingMargin" constant="10" id="b5w-Za-5IS"/>
                             <constraint firstItem="u58-Bh-A2T" firstAttribute="top" secondItem="wRq-2G-CVd" secondAttribute="bottom" constant="50" id="cOL-t8-xdh"/>
+                            <constraint firstItem="ctp-nJ-To8" firstAttribute="leading" secondItem="8Dg-wa-qY2" secondAttribute="leadingMargin" constant="20" id="fQr-q4-Vv5"/>
+                            <constraint firstItem="ctp-nJ-To8" firstAttribute="top" secondItem="aSs-Bs-7em" secondAttribute="bottom" constant="12" id="fl5-fG-sh4"/>
                             <constraint firstItem="vyC-ti-qcL" firstAttribute="trailing" secondItem="8Dg-wa-qY2" secondAttribute="trailingMargin" id="lTD-IY-WUo"/>
                             <constraint firstItem="wRq-2G-CVd" firstAttribute="leading" secondItem="8Dg-wa-qY2" secondAttribute="leadingMargin" constant="10" id="nOV-gn-CRR"/>
                             <constraint firstAttribute="trailingMargin" secondItem="YH4-kS-282" secondAttribute="trailing" constant="10" id="ubK-EL-8FJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ctp-nJ-To8" secondAttribute="trailing" constant="20" id="v7D-1b-5Og"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="oJB-Cn-lXO" appends="YES" id="vLd-ln-X6t"/>
@@ -427,7 +449,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-946" y="-245"/>
+            <point key="canvasLocation" x="-946.39999999999998" y="-245.12743628185908"/>
         </scene>
         <!--Scan Add Word View Controller-->
         <scene sceneID="PER-Iy-4XM">
@@ -464,8 +486,8 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Lrr-pv-FEL">
                                 <rect key="frame" x="31" y="84" width="313" height="225"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="English:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NaN-zS-PXj">
-                                        <rect key="frame" x="0.0" y="0.0" width="73" height="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NaN-zS-PXj">
+                                        <rect key="frame" x="0.0" y="0.0" width="54.5" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="X76-8x-C0b"/>
                                         </constraints>
@@ -483,8 +505,8 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chinese:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dsC-U4-3JI">
-                                        <rect key="frame" x="0.0" y="120" width="81" height="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Explanation:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dsC-U4-3JI">
+                                        <rect key="frame" x="0.0" y="120" width="113.5" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="LOX-Ci-W8y"/>
                                         </constraints>

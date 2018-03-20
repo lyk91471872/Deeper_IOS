@@ -21,31 +21,31 @@ class ListNameViewController: UITableViewController {
             tableView.reloadData()
         }
     }
-    
-    @IBOutlet weak var addList: UIBarButtonItem!
-    @IBAction func setListName(_ sender: UIBarButtonItem) {
-        let selectController = UIAlertController(title: "Adding a new vocabulary list", message: "Preseted academic vocabulary lists available", preferredStyle: UIAlertControllerStyle.alert)
+
+    @IBOutlet weak var addNewList: UIBarButtonItem!
+    @IBAction func addNewList(_ sender: UIBarButtonItem) {
+        let selectController = UIAlertController(title: "Adding a new vocabulary list", message: "Preseted vocabulary lists available", preferredStyle: UIAlertControllerStyle.alert)
         let cancelSelectAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        let newListAction = UIAlertAction(title: "Blank", style: .default, handler: {
+        let newBlankListAction = UIAlertAction(title: "Blank", style: .default, handler: {
             alert -> Void in
-            self.newList()
+            self.newBlankList()
         })
         let newPresetListAction = UIAlertAction(title: "Preseted", style: .default, handler: {
             alert -> Void in
             self.newPresetList()
         })
-        let newOnlineListAction = UIAlertAction(title: "Online", style: .default, handler: {
+        /*let newOnlineListAction = UIAlertAction(title: "Online", style: .default, handler: {
             alert -> Void in
             self.newOnlineList()
-        })
+        })*/
         selectController.addAction(cancelSelectAction)
-        selectController.addAction(newListAction)
+        selectController.addAction(newBlankListAction)
         selectController.addAction(newPresetListAction)
-        selectController.addAction(newOnlineListAction)
+        //selectController.addAction(newOnlineListAction)
         self.present(selectController, animated: true, completion: nil)
     }
     
-    func newList() {
+    func newBlankList() {
         let alertController = UIAlertController(title: "Adding New List", message: message, preferredStyle: UIAlertControllerStyle.alert)
         
         let addAction = UIAlertAction(title: "Add", style: UIAlertActionStyle.default, handler: {
@@ -76,7 +76,7 @@ class ListNameViewController: UITableViewController {
                 self.tableView.reloadData()
             } else {
                 self.message = "List name cannot be empty!"
-                self.setListName(self.addList)
+                self.addNewList(self.addNewList)
             }
         })
         
@@ -86,7 +86,7 @@ class ListNameViewController: UITableViewController {
         })
         
         alertController.addTextField { (textField : UITextField!) -> Void in
-            textField.placeholder = "Enter List Name"
+            textField.placeholder = "Please Enter List Name"
         }
         
         alertController.addAction(cancelAction)
@@ -96,14 +96,14 @@ class ListNameViewController: UITableViewController {
     }
 
     func newPresetList() {
-        let selectController = UIAlertController(title: "Please Select Subject", message: message, preferredStyle: .actionSheet)
-        let jsonURL = Bundle.main.url(forResource: "vocabularies", withExtension: "json")
-        let jsonData = try! Data(contentsOf: jsonURL!)
-        let vocabData = try! JSON(data: jsonData).arrayValue
-        for wordList in vocabData {
-            selectController.addAction(UIAlertAction(title: wordList["subject"].stringValue, style: UIAlertActionStyle.default, handler: {
+        let selectController = UIAlertController(title: "Please Select Subject", message: message, preferredStyle: /*UIAlertControllerStyle.alert*/.actionSheet)
+        let indexJsonURL = Bundle.main.url(forResource: "index", withExtension: "json")
+        let indexJsonData = try! Data(contentsOf: indexJsonURL!)
+        let index = try! JSON(data: indexJsonData).arrayValue
+        for wordList in index {
+            selectController.addAction(UIAlertAction(title: wordList.stringValue, style: UIAlertActionStyle.default, handler: {
                 alert -> Void in
-                var listName = wordList["subject"].stringValue
+                var listName = wordList.stringValue
                 var listNameIsConflicted = true
                 var indexOfSameName = 0
                 while listNameIsConflicted {
@@ -111,7 +111,7 @@ class ListNameViewController: UITableViewController {
                     indexOfSameName += 1
                     for list in self.lists {
                         if list.name == listName {
-                            listName = wordList["subject"].stringValue + " (" + String(indexOfSameName) + ")"
+                            listName = wordList.stringValue + " (" + String(indexOfSameName) + ")"
                             listNameIsConflicted = true
                             break
                         }
@@ -119,7 +119,10 @@ class ListNameViewController: UITableViewController {
                 }
                 let list = CoreDataHelper.newList()
                 list.name = listName
-                for word in wordList["vocabularies"].arrayValue {
+                let vocabJsonURL = Bundle.main.url(forResource: wordList.stringValue, withExtension: "json")
+                let vocabJsonData = try! Data(contentsOf: vocabJsonURL!)
+                let vocabs = try! JSON(data: vocabJsonData)["vocabularies"].arrayValue
+                for word in vocabs {
                     let newWord = CoreDataHelper.newWord()
                     newWord.english = word["English"].stringValue
                     newWord.chinese = word["Chinese"].stringValue
@@ -134,10 +137,12 @@ class ListNameViewController: UITableViewController {
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         selectController.addAction(cancelAction)
         
+        selectController.popoverPresentationController?.barButtonItem = self.addNewList
+        
         self.present(selectController, animated: true, completion: nil)
     }
     
-    func newOnlineList() {
+    /*func newOnlineList() {
         let filepath = Bundle.main.path(forResource: "test", ofType: "json")
         let fileManager = FileManager.default
         
@@ -190,7 +195,7 @@ class ListNameViewController: UITableViewController {
         alertController.addAction(addAction)
         
         self.present(alertController, animated: true, completion: nil)
-    }
+    }*/
     
     /*func selectSubject() {
         let selectSubjectController = UIAlertController(title: "Select Subject", message: "", preferredStyle: .actionSheet)
