@@ -24,7 +24,8 @@ class ListNameViewController: UITableViewController {
 
     @IBOutlet weak var addNewList: UIBarButtonItem!
     @IBAction func addNewList(_ sender: UIBarButtonItem) {
-        let selectController = UIAlertController(title: "Adding a new vocabulary list", message: "Preseted vocabulary lists available", preferredStyle: UIAlertControllerStyle.alert)
+        newPresetList()
+        /*let selectController = UIAlertController(title: "Adding a new vocabulary list", message: "Preseted vocabulary lists available", preferredStyle: UIAlertControllerStyle.alert)
         let cancelSelectAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let newBlankListAction = UIAlertAction(title: "Blank", style: .default, handler: {
             alert -> Void in
@@ -42,7 +43,11 @@ class ListNameViewController: UITableViewController {
         selectController.addAction(newBlankListAction)
         selectController.addAction(newPresetListAction)
         //selectController.addAction(newOnlineListAction)
-        self.present(selectController, animated: true, completion: nil)
+        self.present(selectController, animated: true, completion: nil)*/
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
     }
     
     func newBlankList() {
@@ -100,6 +105,10 @@ class ListNameViewController: UITableViewController {
         let indexJsonURL = Bundle.main.url(forResource: "index", withExtension: "json")
         let indexJsonData = try! Data(contentsOf: indexJsonURL!)
         let index = try! JSON(data: indexJsonData).arrayValue
+        selectController.addAction(UIAlertAction(title: "Blank", style: .default, handler: {
+            alert -> Void in
+            self.newBlankList()
+        }))
         for wordList in index {
             selectController.addAction(UIAlertAction(title: wordList.stringValue, style: UIAlertActionStyle.default, handler: {
                 alert -> Void in
@@ -287,4 +296,3 @@ class ListNameViewController: UITableViewController {
         }
     }
 }
-

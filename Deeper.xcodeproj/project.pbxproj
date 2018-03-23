@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		0B7BD6F0DD3592E7017E87C3 /* Pods_Deeper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 080334CDFEDD657B1D90D168 /* Pods_Deeper.framework */; };
+		86026FB92063E35F0011853B /* Icon-App-20x20@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 86026FB82063E35F0011853B /* Icon-App-20x20@1x.png */; };
+		86026FBC2063E3C90011853B /* Icon-App-40x40@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 86026FBA2063E3C90011853B /* Icon-App-40x40@1x.png */; };
+		86026FBD2063E3C90011853B /* Icon-App-29x29@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 86026FBB2063E3C90011853B /* Icon-App-29x29@1x.png */; };
+		86026FC02063E3F80011853B /* Icon-App-76x76@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 86026FBE2063E3F70011853B /* Icon-App-76x76@1x.png */; };
+		86026FC12063E3F80011853B /* Icon-App-76x76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 86026FBF2063E3F70011853B /* Icon-App-76x76@2x.png */; };
+		86026FC32063E41C0011853B /* Icon-App-83.5x83.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 86026FC22063E41C0011853B /* Icon-App-83.5x83.5@2x.png */; };
 		8615E43C2060AA8500C154C5 /* Deeper_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8615E43B2060AA8500C154C5 /* Deeper_icon.png */; };
 		8639ABDA1F4F269400A623F9 /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8639ABD91F4F269400A623F9 /* ColorHelper.swift */; };
 		8639ABDC1F4F2F3A00A623F9 /* SwipedLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8639ABDB1F4F2F3A00A623F9 /* SwipedLeft.swift */; };
@@ -60,6 +66,12 @@
 /* Begin PBXFileReference section */
 		080334CDFEDD657B1D90D168 /* Pods_Deeper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Deeper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		45411B2C27956A3551197B1E /* Pods-Deeper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Deeper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Deeper/Pods-Deeper.debug.xcconfig"; sourceTree = "<group>"; };
+		86026FB82063E35F0011853B /* Icon-App-20x20@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-App-20x20@1x.png"; path = "Deeper/Resources/ios/AppIcon.appiconset/Icon-App-20x20@1x.png"; sourceTree = "<group>"; };
+		86026FBA2063E3C90011853B /* Icon-App-40x40@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-App-40x40@1x.png"; path = "Deeper/Resources/ios/AppIcon.appiconset/Icon-App-40x40@1x.png"; sourceTree = "<group>"; };
+		86026FBB2063E3C90011853B /* Icon-App-29x29@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-App-29x29@1x.png"; path = "Deeper/Resources/ios/AppIcon.appiconset/Icon-App-29x29@1x.png"; sourceTree = "<group>"; };
+		86026FBE2063E3F70011853B /* Icon-App-76x76@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-App-76x76@1x.png"; path = "Deeper/Resources/ios/AppIcon.appiconset/Icon-App-76x76@1x.png"; sourceTree = "<group>"; };
+		86026FBF2063E3F70011853B /* Icon-App-76x76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-App-76x76@2x.png"; path = "Deeper/Resources/ios/AppIcon.appiconset/Icon-App-76x76@2x.png"; sourceTree = "<group>"; };
+		86026FC22063E41C0011853B /* Icon-App-83.5x83.5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-App-83.5x83.5@2x.png"; path = "Deeper/Resources/ios/AppIcon.appiconset/Icon-App-83.5x83.5@2x.png"; sourceTree = "<group>"; };
 		8615E43B2060AA8500C154C5 /* Deeper_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Deeper_icon.png; path = Deeper/Resources/Deeper_icon.png; sourceTree = "<group>"; };
 		8639ABD91F4F269400A623F9 /* ColorHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
 		8639ABDB1F4F2F3A00A623F9 /* SwipedLeft.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipedLeft.swift; sourceTree = "<group>"; };
@@ -196,14 +208,20 @@
 			isa = PBXGroup;
 			children = (
 				8615E43B2060AA8500C154C5 /* Deeper_icon.png */,
+				86026FB82063E35F0011853B /* Icon-App-20x20@1x.png */,
 				868C211C1F3398450077A056 /* Icon-App-20x20@2x.png */,
 				868C211D1F3398450077A056 /* Icon-App-20x20@3x.png */,
+				86026FBB2063E3C90011853B /* Icon-App-29x29@1x.png */,
 				868C211E1F3398450077A056 /* Icon-App-29x29@2x.png */,
 				868C211F1F3398450077A056 /* Icon-App-29x29@3x.png */,
+				86026FBA2063E3C90011853B /* Icon-App-40x40@1x.png */,
 				868C21201F3398450077A056 /* Icon-App-40x40@2x.png */,
 				868C21211F3398450077A056 /* Icon-App-40x40@3x.png */,
 				868C21221F3398450077A056 /* Icon-App-60x60@2x.png */,
 				868C21231F3398450077A056 /* Icon-App-60x60@3x.png */,
+				86026FBE2063E3F70011853B /* Icon-App-76x76@1x.png */,
+				86026FBF2063E3F70011853B /* Icon-App-76x76@2x.png */,
+				86026FC22063E41C0011853B /* Icon-App-83.5x83.5@2x.png */,
 				868C21171F337FE10077A056 /* launch.png */,
 			);
 			name = Resources;
@@ -302,11 +320,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86026FC32063E41C0011853B /* Icon-App-83.5x83.5@2x.png in Resources */,
 				86FB7667205E984000119E3E /* index.json in Resources */,
 				868C21281F3398450077A056 /* Icon-App-40x40@2x.png in Resources */,
+				86026FC02063E3F80011853B /* Icon-App-76x76@1x.png in Resources */,
 				8650A0DD1F2C5BBD00FF0EB3 /* LaunchScreen.storyboard in Resources */,
 				868C211A1F337FE10077A056 /* launch.png in Resources */,
 				868C21291F3398450077A056 /* Icon-App-40x40@3x.png in Resources */,
+				86026FB92063E35F0011853B /* Icon-App-20x20@1x.png in Resources */,
 				868C21251F3398450077A056 /* Icon-App-20x20@3x.png in Resources */,
 				868C21241F3398450077A056 /* Icon-App-20x20@2x.png in Resources */,
 				868C212B1F3398450077A056 /* Icon-App-60x60@3x.png in Resources */,
@@ -316,6 +337,9 @@
 				8661FA9F205FD7CE003809E2 /* APCalculus.json in Resources */,
 				8650A0DA1F2C5BBD00FF0EB3 /* Assets.xcassets in Resources */,
 				8650A0D51F2C5BBD00FF0EB3 /* Main.storyboard in Resources */,
+				86026FC12063E3F80011853B /* Icon-App-76x76@2x.png in Resources */,
+				86026FBD2063E3C90011853B /* Icon-App-29x29@1x.png in Resources */,
+				86026FBC2063E3C90011853B /* Icon-App-40x40@1x.png in Resources */,
 				8615E43C2060AA8500C154C5 /* Deeper_icon.png in Resources */,
 				868C21271F3398450077A056 /* Icon-App-29x29@3x.png in Resources */,
 				86FB7665205E983B00119E3E /* SAT.json in Resources */,
@@ -536,7 +560,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.lyk91471872.Deeper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -556,7 +580,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.lyk91471872.Deeper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

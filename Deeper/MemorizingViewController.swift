@@ -82,6 +82,22 @@ class MemorizingViewController: UIViewController {
     @IBAction func swipedUp(_ sender: Any) {
         familiaritySet(4)
     }
+    @IBAction func tips(_ sender: Any) {
+        let tipsMessage = "Choose how familiar the word is to you, and the frequency that the word repeats will be set based on the familiarity.\n\nInstead of tapping the buttons, you can tap anywhere to show the explanation, and swipe to show the familiarity:\n    Swipe Left: Unknown\n    Swipe Down: Unfamiliar\n    Swipe Up: Known\n    Swipe Right: Familiar"
+        
+        let alertController = UIAlertController(title: "Tips", message: tipsMessage, preferredStyle: UIAlertControllerStyle.alert)
+        
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {
+            alert -> Void in
+            }))
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = NSTextAlignment.left
+        let messageText = NSMutableAttributedString(string: tipsMessage, attributes: [NSParagraphStyleAttributeName: paragraphStyle, NSFontAttributeName : UIFont.systemFont(ofSize: 18), NSForegroundColorAttributeName: UIColor.black])
+        alertController.setValue(messageText, forKey: "attributedMessage")
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
     
     func enableGestures() {
         swipedLeftRecognizer.isEnabled = true
@@ -124,6 +140,14 @@ class MemorizingViewController: UIViewController {
         while true {
             currentWord = words[currentWordIndex]
             if currentWord.delay == 0 && currentWord.familiarity != 3 && currentWord.familiarity != 4 {
+                if currentWord.familiarity == 0 {
+                    for word in words {
+                        if word.delay == 0 && word.familiarity != 0 && word.familiarity != 3 && word.familiarity != 4{
+                            currentWord = word
+                            break
+                        }
+                    }
+                }
                 index = 0
                 labelEnglish.text = currentWord.english
                 labelChinese.text = currentWord.chinese
@@ -164,7 +188,6 @@ class MemorizingViewController: UIViewController {
                             word.delay -= 1
                         } else if word.familiarity != 3 && word.familiarity != 4 {
                             flag = 1
-                            break
                         }
                     }
                     if flag == 1 {
@@ -211,22 +234,22 @@ class MemorizingViewController: UIViewController {
         self.title = thisList.name
         for word in words {
             switch word.familiarity {
-            case 0:
+            case 0://undecided
                 word.delay = 0
                 break
-            case 1:
+            case 1://unknown
                 word.delay = 1
                 break
-            case 2:
+            case 2://unfamiliar
                 word.delay = 5
                 break
-            case 3:
+            case 3://known and already shown this time
                 word.delay = 10
                 word.familiarity = 5
                 break
-            case 4:
+            case 4://familiar
                 break
-            case 5:
+            case 5://last time choosed known
                 word.delay = 10
                 break
             default:
