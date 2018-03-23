@@ -22,6 +22,22 @@ class ListNameViewController: UITableViewController {
         }
     }
 
+    @IBAction func showTips(_ sender: Any) {
+        let tipsMessage = "* tap a list to memorize\n* swipe left on a list to delete\n\nRename:\ntap it to rename the word list\n\nEdit:\noverview and edit the words in the list\n\nProgress Bar:\nthe bar between rename and reset, shows the proportion of known or familiar words\n\nReset:\nclear your memorizing progress"
+        
+        let alertController = UIAlertController(title: "Tips", message: tipsMessage, preferredStyle: UIAlertControllerStyle.alert)
+        
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {
+            alert -> Void in
+        }))
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = NSTextAlignment.left
+        let messageText = NSMutableAttributedString(string: tipsMessage, attributes: [NSParagraphStyleAttributeName: paragraphStyle, NSFontAttributeName : UIFont.systemFont(ofSize: 18), NSForegroundColorAttributeName: UIColor.black])
+        alertController.setValue(messageText, forKey: "attributedMessage")
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
     @IBOutlet weak var addNewList: UIBarButtonItem!
     @IBAction func addNewList(_ sender: UIBarButtonItem) {
         newPresetList()
@@ -220,7 +236,6 @@ class ListNameViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        // Refresh when view appear
         lists = CoreDataHelper.retrieveLists()
         self.tableView.reloadData()
     }

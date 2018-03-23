@@ -38,7 +38,8 @@ class ListViewController: UITableViewController {
     }
     
     @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
-        let alertController = UIAlertController(title: "Add New Words", message: "Please choose a way to add words.", preferredStyle: UIAlertControllerStyle.alert)
+        self.performSegue(withIdentifier: "toManual", sender: self)
+        /*let alertController = UIAlertController(title: "Add New Words", message: "Please choose a way to add words.", preferredStyle: UIAlertControllerStyle.alert)
         
         let manualAction = UIAlertAction(title: "Manual", style: UIAlertActionStyle.default, handler: {
             alert -> Void in
@@ -66,7 +67,7 @@ class ListViewController: UITableViewController {
         alertController.addAction(manualAction)
         
         
-        self.present(alertController, animated: true, completion: nil)
+        self.present(alertController, animated: true, completion: nil)*/
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: (Any)?) {

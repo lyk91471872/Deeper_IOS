@@ -29,12 +29,12 @@ class ManualAddWordViewController: UIViewController, UITextFieldDelegate {
     func showFadingAlert(_ text: String) {
         fadingAlert.text = text
         fadingAlert.alpha = 1
-        fadingAlert.isHidden = false
-        UIView.animate(withDuration: 2.5, animations: {
+        //fadingAlert.isHidden = false
+        UIView.animate(withDuration: 2, animations: {
             self.fadingAlert.alpha = 0
         }, completion: {
             (value: Bool) in
-            self.fadingAlert.isHidden = true
+            //self.fadingAlert.isHidden = true
         })
 
     }

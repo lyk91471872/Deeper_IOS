@@ -227,9 +227,9 @@ class MemorizingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.hidesBackButton = true
-        let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(MemorizingViewController.back(sender:)))
-        self.navigationItem.leftBarButtonItem = newBackButton
+        //self.navigationItem.hidesBackButton = true
+        //let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(MemorizingViewController.back(sender:)))
+        //self.navigationItem.leftBarButtonItem = newBackButton
         reloadList()
         self.title = thisList.name
         for word in words {
@@ -270,12 +270,16 @@ class MemorizingViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func back(sender: UIBarButtonItem) {
+    override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
+        timer.invalidate()
+    }
+    
+    /*func back(sender: UIBarButtonItem) {
         // Perform your custom actions
         timer.invalidate()
         // Go back to the previous ViewController
         _ = navigationController?.popViewController(animated: true)
-    }
+    }*/
     
 
     /*
